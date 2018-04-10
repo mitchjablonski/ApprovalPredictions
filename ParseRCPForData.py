@@ -66,8 +66,6 @@ def ModifyDatesForYear(dateData, latestYear):
         if (int(startMonth[0]) == 11 and int(endMonth[0]) == 11):
             yearModified = False
     return pollingDates
-        
-        
 
 if __name__ == "__main__":
     content = urllib2.urlopen("https://www.realclearpolitics.com/epolls/other/president_trump_job_approval-6179.html")
