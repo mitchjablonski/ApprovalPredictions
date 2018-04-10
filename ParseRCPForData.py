@@ -5,10 +5,23 @@ Created on Sat Apr 07 09:58:31 2018
 @author: mitch
 """
 ##referenced https://henryhungle.wordpress.com/2016/08/05/python-predicting-us-presidential-election/ for similar parsing
+#from googleapiclient.discovery import build
+
+#from apiclient.discovery import build
+
+from apiclient.discovery import build
 import urllib2
 from bs4 import BeautifulSoup
 import pandas as pd
 from collections import defaultdict
+
+
+
+config = {}
+execfile("C:\Users\mitch\Desktop\Masters\DataMiningI\DataMiningProject\config.py", config)
+
+devKey = config["GdevKey"]
+devcx = config["Gdevcx"]
 
 def ConvertToTwoDigitDate(currDate):
     newDate = currDate
@@ -67,7 +80,18 @@ def ModifyDatesForYear(dateData, latestYear):
             yearModified = False
     return pollingDates
 
+
+def BuildGoogleQuery(query, startDate, endDate):
+    service = build("customsearch", "v1",
+                    developerKey=devKey)
+    dateRange = "date:r:" + startDate + ":" + endDate
+    ##may need start to limit
+    result = service.cse().list(q=query, cx=devcx, sort=dateRange).execute()
+    return result["searchInformation"]["totalResults"]
+
+
 if __name__ == "__main__":
+    myQuery = 'Donald Trump'
     content = urllib2.urlopen("https://www.realclearpolitics.com/epolls/other/president_trump_job_approval-6179.html")
     soup = BeautifulSoup(content,'html.parser')
     tables = soup.findAll('table', {'class': 'data'})
@@ -91,4 +115,16 @@ if __name__ == "__main__":
     
     for keys in pollingDates.keys():
         pollingDF[keys] = pollingDates[keys]
+    
+    pollsters = set(pollingDF['Poll'])
+    ##Most common polsters Reuters/Rasmussen with radically different averages
+    #rasmussenDF = pollingDF[pollingDF['Poll'] == 'Rasmussen ReportsRasmussen']
+    ##Reuters is most common Pollster
+    reutersDF = pollingDF[pollingDF['Poll'] == 'Reuters/IpsosReuters']
+    
+    rows, _ = reutersDF.shape
+    
+    for row in range(rows):
+        BuildGoogleQuery(myQuery, reutersDF.iloc[row]['StartDate'], reutersDF.iloc[row]['EndDate'])
+    
     
