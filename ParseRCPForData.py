@@ -87,14 +87,12 @@ def build_google_query(query, start_date, end_date):
     result = service.cse().list(q=query, cx=devcx, sort=date_range).execute()
     return result["searchInformation"]["totalResults"]
 
-
-if __name__ == "__main__":
-    my_query = 'Donald Trump'
+def parse_html_for_table(url, table_index):
     content = urllib2.urlopen("https://www.realclearpolitics.com/epolls/other/president_trump_job_approval-6179.html")
     soup = BeautifulSoup(content,'html.parser')
     tables = soup.findAll('table', {'class': 'data'})
     ##1st table in page index 0 is only recent polls, 2nd table index 1 is all data.
-    table = tables[1]
+    table = tables[table_index]
     
     rows = [row for row in table.find_all("tr")]
     columns = [str(col.get_text()) for col in rows[0].find_all("th")]
@@ -106,7 +104,14 @@ if __name__ == "__main__":
         polling_data.append([(str(t.get_text())) for t in tds[:]])
     
     polling_df = pd.DataFrame(data = polling_data[1:], columns = polling_headers)
-    
+    return polling_df
+
+if __name__ == "__main__":
+    my_query = 'Donald Trump'
+    url = "https://www.realclearpolitics.com/epolls/other/president_trump_job_approval-6179.html"
+    ##1st table in page index 0 is only recent polls, 2nd table index 1 is all data.
+    table_index = 1
+    polling_df = parse_html_for_table(url, table_index)
     latest_year = '2018'
     polling_dates = modify_dates_to_contain_year(polling_df['Date'], latest_year)
     
