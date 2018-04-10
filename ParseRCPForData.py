@@ -8,7 +8,7 @@ Created on Sat Apr 07 09:58:31 2018
 import urllib2
 from bs4 import BeautifulSoup
 import pandas as pd
-#from collections import defaultdict
+from collections import defaultdict
 
 
 content = urllib2.urlopen("https://www.realclearpolitics.com/epolls/other/president_trump_job_approval-6179.html")
