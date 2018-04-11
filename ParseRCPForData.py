@@ -102,28 +102,23 @@ def clean_text(s):
   return s
 ##End
 
-def get_search_start_and_end_date(searchStart, searchEnd):
-    pass
-'''
-searchStart = datetime.strptime(reuters_df.iloc[row]['StartDate'], "%Y-%m-%d")
-        searchEnd   = datetime.strptime(reuters_df.iloc[row]['EndDate'], "%Y-%m-%d")
-        deltaDays   = abs(searchEnd - searchStart).days
-        searchStart = str((searchStart - timedelta(days = deltaDays)).date())
-        searchEnd   = str((searchEnd - timedelta(days = deltaDays)).date())
-'''
+def get_search_start_and_end_date(search_start, search_end):
+    search_start = datetime.strptime(search_start, "%Y-%m-%d")
+    search_end   = datetime.strptime(search_end, "%Y-%m-%d")
+    delta_days   = abs(search_end - search_start).days
+    search_start = str((search_start - timedelta(days = delta_days)).date())
+    search_end   = str((search_end - timedelta(days = delta_days)).date())
+    return search_start, search_end
 
 def request_and_write_google_results(poll_df, out_dir):
     rows, _ = poll_df.shape
     for row in range(rows):
-        new_file = (out_dir + '\\' + my_query +  reuters_df.iloc[row]['StartDate']+'_'+ reuters_df.iloc[row]['EndDate']+'.txt')
-        searchStart = datetime.strptime(reuters_df.iloc[row]['StartDate'], "%Y-%m-%d")
-        searchEnd   = datetime.strptime(reuters_df.iloc[row]['EndDate'], "%Y-%m-%d")
-        deltaDays   = abs(searchEnd - searchStart).days
-        searchStart = str((searchStart - timedelta(days = deltaDays)).date())
-        searchEnd   = str((searchEnd - timedelta(days = deltaDays)).date())
+        new_file = (out_dir + '\\' + my_query +  reuters_df.iloc[row]['StartDate']+ '_' + reuters_df.iloc[row]['EndDate'] +'.txt')
+        ##We should search from the the amount of days the poll lasted prior to the start, through the start
+        search_start, search_end = get_search_start_and_end_date(reuters_df.iloc[row]['StartDate'], reuters_df.iloc[row]['EndDate'])
         ##For our purposes, there appear to be 3 important items, the title for each item, the snippet and the link (technically not important)
         with open(new_file, 'w') as curr_file:
-            results = build_google_query(my_query, searchStart.replace('-',''), searchEnd.replace('-',''), num_requests)
+            results = build_google_query(my_query, search_start.replace('-',''), search_end.replace('-',''), num_requests)
             curr_file.write('Link\tTitle\tSnippet\n')
             for items in results['items']:
                 curr_file.write(items['link'] +'\t' + clean_text(items['title']) + '\t' + clean_text(items['snippet']) + '\n')
