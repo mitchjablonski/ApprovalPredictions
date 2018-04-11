@@ -4,7 +4,6 @@ Created on Sat Apr 07 09:58:31 2018
 
 @author: mitch
 """
-##referenced https://henryhungle.wordpress.com/2016/08/05/python-predicting-us-presidential-election/ for similar parsing
 #from googleapiclient.discovery import build
 
 #from apiclient.discovery import build
@@ -15,6 +14,10 @@ from bs4 import BeautifulSoup
 import pandas as pd
 from collections import defaultdict
 from datetime import datetime, timedelta
+from string import punctuation
+from wordcloud import WordCloud, STOPWORDS
+import sys
+import matplotlib.pyplot as plt
 
 config = {}
 execfile("C:\Users\mitch\Desktop\Masters\DataMiningI\DataMiningProject\config.py", config)
@@ -122,7 +125,8 @@ def request_and_write_google_results(poll_df, out_dir):
             curr_file.write('Link\tTitle\tSnippet\n')
             for items in results['items']:
                 curr_file.write(items['link'] +'\t' + clean_text(items['title']) + '\t' + clean_text(items['snippet']) + '\n')
-                
+
+##referenced https://henryhungle.wordpress.com/2016/08/05/python-predicting-us-presidential-election/ for similar parsing                
 def parse_html_for_table(url, table_index):
     content = urllib2.urlopen(url)
     soup = BeautifulSoup(content,'html.parser')
@@ -142,14 +146,65 @@ def parse_html_for_table(url, table_index):
     polling_df = pd.DataFrame(data = polling_data[1:], columns = polling_headers)
     return polling_df
 
+def clean_punctuation(words):
+    for c in punctuation:
+        words= words.replace(c," ") 
+    return words
+
+def save_word_cloud(words, filename):
+    wordcloud = WordCloud(
+                     #font_path='C:/Tweets/cabin-sketch-v1.02/CabinSketch-Regular.ttf',
+                      stopwords=STOPWORDS,
+                      background_color='black',
+                      width=1800,
+                      height=1400
+                     ).generate(words)
+
+    #sys.stdout.write('%s\n' % words)
+    plt.imshow(wordcloud)
+    plt.axis('off')
+    plt.savefig('./' +filename +'.png', dpi=300)
+    plt.show()
+
+def stop_words_for_wordcloud(stop_words):
+    for word in stop_words:
+        STOPWORDS.add(word)
+
+def build_word_cloud(polling_df, out_dir, stop_words):
+    stop_words_for_wordcloud(stop_words)
+    snippet_words = ''
+    title_words = ''
+    rows, _ = polling_df.shape
+    for row in range(rows):
+        filepath = (out_dir + '\\' + my_query +  polling_df.iloc[row]['StartDate']+ '_' + polling_df.iloc[row]['EndDate'] +'.txt')
+        data = pd.read_csv(filepath, delimiter="\t")
+        snippet_words += data['Snippet'].add(' ').sum(axis = 0)
+        title_words += data['Title'].add(' ').sum(axis = 0)
+    
+    snippet_words = clean_punctuation(snippet_words)
+    title_words = clean_punctuation(title_words)    
+    save_word_cloud(snippet_words, 'snippet_word_cloud')
+    save_word_cloud(title_words, 'title_word_cloud')
+
 if __name__ == "__main__":
     my_query = 'Donald Trump'
     url = "https://www.realclearpolitics.com/epolls/other/president_trump_job_approval-6179.html"
     out_dir = "C:\Users\mitch\Desktop\Masters\DataMiningI\DataMiningProject\ApprovalPredictions\GoogleRequests"
+    stop_words = ['Donald', 'Trump', 'President', 'Washington', 
+                  'President', 'York', 'Jr', 'AP', 'White', 'House',
+                  'Monday', 'Tuesday', 'Wednesday', 
+                  'Thursday', 'Friday', 'Saturday', 'Sunday',
+                  'Jan', 'Feb', 'Mar', 'Apr', 'May', 
+                  'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 
+                  'Nov', 'Dec', 'say', 'said', 'talk', 
+                  'latest', 'sign', 'first', 'wants', 
+                  'day', 'tell', 'second', 'Associated', 'Press']
     ##1st table in page index 0 is only recent polls, 2nd table index 1 is all data.
     table_index = 1
     latest_year = '2018'
     num_requests = 10
+    collect_new_data = False
+    populate_wordcloud = True
     
     polling_df = parse_html_for_table(url, table_index)
     polling_dates = modify_dates_to_contain_year(polling_df['Date'], latest_year)
@@ -160,17 +215,10 @@ if __name__ == "__main__":
     pollsters = set(polling_df['Poll'])
     ##Reuters is most common Pollster
     reuters_df = polling_df[polling_df['Poll'] == 'Reuters/IpsosReuters']
+    if collect_new_data:
+        request_and_write_google_results(reuters_df, out_dir)
     
-    request_and_write_google_results(reuters_df, out_dir)
-    
+    if populate_wordcloud:
+        build_word_cloud(reuters_df, out_dir, stop_words)
     ## to read back in the data we write: data = pd.read_csv(filepath, delimiter="\t")
-    
-    ##For our purposes, there appear to be 3 important items, the title for each item, the snippet and the link (technically not important)
-    '''
-    for row in range(rows):
-        new_file = (outdir + '\\' + my_query +  reuters_df.iloc[row]['StartDate']+ reuters_df.iloc[row]['EndDate']+'.txt')
-        with open(new_file, 'w') as curr_file:
-            results = build_google_query(my_query, reuters_df.iloc[row]['StartDate'], reuters_df.iloc[row]['EndDate'], num_requests)
-            print(results)
-    '''
     
