@@ -1,0 +1,352 @@
+,Poll,Date,Sample,Approve,Disapprove,Spread
+0,RCP Average,3/22 - 4/11,--,42.1,54.0,-11.9
+1,Rasmussen ReportsRasmussen,4/9 - 4/11,1500 LV,50,49,+1
+2,Economist/YouGovEconomist,4/8 - 4/10,1292 RV,42,53,-11
+3,Reuters/IpsosReuters,4/6 - 4/10,1219 RV,39,58,-19
+4,QuinnipiacQuinnipiac,4/6 - 4/9,1181 RV,41,52,-11
+5,GallupGallup,4/2 - 4/8,1500 A,41,54,-13
+6,Economist/YouGovEconomist,4/1 - 4/3,1246 RV,41,55,-14
+7,Reuters/IpsosReuters,3/30 - 4/3,1519 RV,41,56,-15
+8,Harvard-HarrisHarvard-Harris,3/27 - 3/29,1340 RV,44,56,-12
+9,GallupGallup,3/25 - 3/31,1500 A,39,55,-16
+10,Economist/YouGovEconomist,3/25 - 3/27,1330 RV,41,54,-13
+11,IBD/TIPPIBD/TIPP,3/22 - 3/29,902 A,38,56,-18
+12,Reuters/IpsosReuters,3/23 - 3/27,1392 RV,41,55,-14
+13,PPP (D)PPP (D),3/23 - 3/25,846 RV,39,54,-15
+14,CNNCNN,3/22 - 3/25,913 RV,43,53,-10
+15,GallupGallup,3/19 - 3/25,1500 A,39,55,-16
+16,MaristMarist,3/19 - 3/21,1015 RV,42,51,-9
+17,FOX NewsFOX News,3/18 - 3/21,1014 RV,45,52,-7
+18,Economist/YouGovEconomist,3/18 - 3/20,1284 RV,41,54,-13
+19,CNBCCNBC,3/17 - 3/20,801 A,39,50,-11
+20,QuinnipiacQuinnipiac,3/16 - 3/20,1291 RV,40,53,-13
+21,Reuters/IpsosReuters,3/16 - 3/20,1337 RV,44,52,-8
+22,GallupGallup,3/12 - 3/18,1500 A,40,56,-16
+23,NBC News/Wall St. JrnlNBC/WSJ,3/10 - 3/14,1100 A,43,53,-10
+24,Economist/YouGovEconomist,3/10 - 3/13,1291 RV,42,54,-12
+25,Pew ResearchPew,3/7 - 3/14,RV,42,53,-11
+26,Reuters/IpsosReuters,3/9 - 3/13,1411 A,39,56,-17
+27,CBS NewsCBS News,3/8 - 3/11,1223 A,38,57,-19
+28,GallupGallup,3/5 - 3/11,1500 A,39,56,-17
+29,GWU/BattlegroundGWU/Battleground,3/4 - 3/8,1000 RV,42,55,-13
+30,MaristMarist,3/5 - 3/6,867 RV,44,49,-5
+31,Economist/YouGovEconomist,3/4 - 3/6,1310 RV,41,54,-13
+32,QuinnipiacQuinnipiac,3/3 - 3/5,1122 RV,38,56,-18
+33,MonmouthMonmouth,3/2 - 3/5,708 RV,40,54,-14
+34,Reuters/IpsosReuters,3/2 - 3/6,2927 A,40,54,-14
+35,GallupGallup,2/26 - 3/4,1500 A,39,55,-16
+36,IBD/TIPPIBD/TIPP,2/22 - 3/1,901 A,37,58,-21
+37,Economist/YouGovEconomist,2/25 - 2/27,1296 RV,44,53,-9
+38,Reuters/IpsosReuters,2/23 - 2/27,1651 A,40,56,-16
+39,GallupGallup,2/19 - 2/25,1500 A,39,56,-17
+40,USA Today/SuffolkUSA Today,2/20 - 2/24,1000 RV,38,60,-22
+41,CNNCNN,2/20 - 2/23,909 RV,39,56,-17
+42,MaristMarist,2/20 - 2/21,819 RV,40,53,-13
+43,Economist/YouGovEconomist,2/18 - 2/20,1308 RV,44,51,-7
+44,Reuters/IpsosReuters,2/16 - 2/20,1104 A,40,55,-15
+45,QuinnipiacQuinnipiac,2/16 - 2/19,1249 RV,37,58,-21
+46,Harvard-HarrisHarvard-Harris,2/16 - 2/19,1934 RV,45,55,-10
+47,GallupGallup,2/12 - 2/18,1500 A,37,59,-22
+48,Economist/YouGovEconomist,2/11 - 2/13,1280 RV,45,50,-5
+49,FOX NewsFOX News,2/10 - 2/13,1005 RV,43,53,-10
+50,Reuters/IpsosReuters,2/9 - 2/13,1515 A,39,54,-15
+51,PPP (D)PPP (D),2/9 - 2/11,687 RV,44,50,-6
+52,GallupGallup,2/5 - 2/11,1500 A,40,57,-17
+53,MaristMarist,2/5 - 2/7,807 RV,39,56,-17
+54,Economist/YouGovEconomist,2/4 - 2/6,1320 RV,45,53,-8
+55,Reuters/IpsosReuters,2/2 - 2/6,3110 A,40,54,-14
+56,QuinnipiacQuinnipiac,2/2 - 2/5,1333 RV,40,55,-15
+57,GallupGallup,1/29 - 2/4,1500 A,40,57,-17
+58,IBD/TIPPIBD/TIPP,1/25 - 2/2,900 A,35,58,-23
+59,MonmouthMonmouth,1/28 - 1/30,711 RV,44,48,-4
+60,Economist/YouGovEconomist,1/28 - 1/30,1264 RV,44,53,-9
+61,Reuters/IpsosReuters,1/26 - 1/30,1856 A,41,53,-12
+62,GallupGallup,1/21 - 1/28,1500 A,38,58,-20
+63,FOX NewsFOX News,1/21 - 1/23,1002 RV,45,53,-8
+64,Economist/YouGovEconomist,1/21 - 1/23,1301 RV,43,54,-11
+65,Reuters/IpsosReuters,1/19 - 1/23,2981 A,37,59,-22
+66,QuinnipiacQuinnipiac,1/19 - 1/23,1245 RV,36,58,-22
+67,GallupGallup,1/15 - 1/21,1500 A,36,59,-23
+68,Harvard-HarrisHarvard-Harris,1/17 - 1/19,980 RV,44,56,-12
+69,ABC News/Wash PostABC/WP,1/15 - 1/18,846 RV,38,58,-20
+70,CNNCNN,1/14 - 1/18,RV,43,53,-10
+71,Economist/YouGovEconomist,1/14 - 1/16,1311 RV,42,54,-12
+72,NBC News/Wall St. JrnlNBC/WSJ,1/13 - 1/17,900 A,39,57,-18
+73,Harvard-HarrisHarvard-Harris,1/13 - 1/16,1192 RV,42,58,-16
+74,CBS NewsCBS News,1/13 - 1/16,1225 A,37,58,-21
+75,QuinnipiacQuinnipiac,1/12 - 1/16,1212 RV,38,57,-19
+76,Reuters/IpsosReuters,1/12 - 1/16,1638 A,39,56,-17
+77,Pew ResearchPew,1/10 - 1/15,1215 RV,39,55,-16
+78,GallupGallup,1/8 - 1/14,1500 A,38,57,-19
+79,EmersonEmerson,1/8 - 1/11,600 RV,39,52,-13
+80,NPR/PBS/MaristNPR/PBS/Marist,1/8 - 1/10,1092 RV,40,51,-11
+81,Economist/YouGovEconomist,1/8 - 1/9,1327 RV,42,54,-12
+82,QuinnipiacQuinnipiac,1/5 - 1/9,1106 RV,36,59,-23
+83,Reuters/IpsosReuters,1/5 - 1/9,1616 A,41,55,-14
+84,IBD/TIPPIBD/TIPP,1/2 - 1/10,901 A,35,58,-23
+85,GallupGallup,1/2 - 1/7,1500 A,37,58,-21
+86,Economist/YouGovEconomist,12/31 - 1/2,1277 RV,43,54,-11
+87,Reuters/IpsosReuters,12/29 - 1/2,1770 A,41,54,-13
+88,GallupGallup,12/28 - 12/30,1500 A,40,55,-15
+89,Economist/YouGovEconomist,12/24 - 12/26,1004 RV,43,53,-10
+90,Economist/YouGovEconomist,12/17 - 12/19,1291 RV,41,55,-14
+91,Reuters/IpsosReuters,12/15 - 12/19,2492 A,35,60,-25
+92,CNNCNN,12/14 - 12/17,898 RV,36,59,-23
+93,QuinnipiacQuinnipiac,12/13 - 12/18,1230 RV,37,59,-22
+94,NBC News/Wall St. JrnlNBC/WSJ,12/13 - 12/15,900 A,41,56,-15
+95,PPP (D)PPP (D),12/11 - 12/12,862 RV,41,56,-15
+96,CNBCCNBC,12/10 - 12/13,800 A,42,49,-7
+97,Economist/YouGovEconomist,12/10 - 12/12,1338 RV,41,54,-13
+98,MonmouthMonmouth,12/10 - 12/12,702 RV,33,59,-26
+99,Reuters/IpsosReuters,12/8 - 12/12,1457 A,33,61,-28
+100,Harvard-HarrisHarvard-Harris,12/8 - 12/11,1989 RV,41,59,-18
+101,QuinnipiacQuinnipiac,12/6 - 12/11,1211 RV,37,57,-20
+102,MaristMarist,12/4 - 12/7,1079 RV,39,55,-16
+103,CBS NewsCBS News,12/3 - 12/5,1120 A,36,57,-21
+104,Economist/YouGovEconomist,12/3 - 12/5,1341 RV,43,52,-9
+105,Reuters/IpsosReuters,12/1 - 12/5,1548 A,37,59,-22
+106,QuinnipiacQuinnipiac,11/29 - 12/4,1508 RV,35,58,-23
+107,Pew ResearchPew,11/29 - 12/4,RV,34,62,-28
+108,IBD/TIPPIBD/TIPP,11/27 - 12/4,901 A,36,59,-23
+109,Economist/YouGovEconomist,11/26 - 11/28,1319 RV,43,53,-10
+110,Reuters/IpsosReuters,11/24 - 11/28,1969 A,38,57,-19
+111,Economist/YouGovEconomist,11/19 - 11/21,1344 RV,40,55,-15
+112,Reuters/IpsosReuters,11/17 - 11/22,1489 A,36,59,-23
+113,QuinnipiacQuinnipiac,11/15 - 11/20,1415 RV,38,55,-17
+114,NPR/PBS/MaristNPR/PBS/Marist,11/13 - 11/15,802 RV,42,54,-12
+115,Economist/YouGovEconomist,11/12 - 11/14,1281 RV,39,56,-17
+116,Harvard-HarrisHarvard-Harris,11/11 - 11/14,2350 RV,41,59,-18
+117,Reuters/IpsosReuters,11/10 - 11/14,1520 A,37,59,-22
+118,QuinnipiacQuinnipiac,11/7 - 11/13,1577 RV,35,58,-23
+119,MaristMarist,11/6 - 11/9,850 RV,39,55,-16
+120,Economist/YouGovEconomist,11/5 - 11/7,1336 RV,40,55,-15
+121,Reuters/IpsosReuters,11/3 - 11/7,1572 A,35,60,-25
+122,CNNCNN,11/2 - 11/5,RV,38,57,-19
+123,IBD/TIPPIBD/TIPP,10/26 - 11/3,917 A,36,58,-22
+124,ABC News/Wash PostABC/WP,10/29 - 11/1,884 RV,38,58,-20
+125,Economist/YouGovEconomist,10/29 - 10/31,1291 RV,43,52,-9
+126,Reuters/IpsosReuters,10/27 - 10/31,1798 A,36,60,-24
+127,CBS NewsCBS News,10/27 - 10/30,1109 A,39,55,-16
+128,PPP (D)PPP (D),10/27 - 10/29,572 RV,38,56,-18
+129,Pew ResearchPew,10/25 - 10/30,1504 A,34,59,-25
+130,NBC News/Wall St. JrnlNBC/WSJ,10/23 - 10/26,900 A,38,58,-20
+131,FOX NewsFOX News,10/22 - 10/24,1005 RV,38,57,-19
+132,Economist/YouGovEconomist,10/22 - 10/24,1312 RV,41,56,-15
+133,Reuters/IpsosReuters,10/20 - 10/24,2352 A,35,60,-25
+134,Harvard-HarrisHarvard-Harris,10/14 - 10/18,2159 RV,42,58,-16
+135,MaristMarist,10/15 - 10/17,928 RV,38,54,-16
+136,Reuters/IpsosReuters,10/13 - 10/17,1678 A,38,58,-20
+137,Economist/YouGovEconomist,10/15 - 10/16,1326 RV,41,54,-13
+138,CNNCNN,10/12 - 10/15,RV,38,57,-19
+139,EmersonEmerson,10/12 - 10/14,820 RV,44,50,-6
+140,Economist/YouGovEconomist,10/7 - 10/10,1278 RV,41,53,-12
+141,Reuters/IpsosReuters,10/6 - 10/10,1584 A,36,59,-23
+142,QuinnipiacQuinnipiac,10/5 - 10/10,1482 RV,38,56,-18
+143,Economist/YouGovEconomist,10/1 - 10/3,1298 RV,42,55,-13
+144,IBD/TIPPIBD/TIPP,9/29 - 10/8,887 A,33,61,-28
+145,Reuters/IpsosReuters,9/30 - 10/3,1659 A,37,58,-21
+146,USA Today/SuffolkUSA Today,9/27 - 10/1,1000 RV,38,56,-18
+147,CNNCNN,9/26 - 9/28,1037 A,37,56,-19
+148,PBS/MaristPBS/Marist,9/25 - 9/27,886 RV,39,54,-15
+149,CNBCCNBC,9/24 - 9/27,800 A,38,52,-14
+150,FOX NewsFOX News,9/24 - 9/26,1017 RV,42,53,-11
+151,Economist/YouGovEconomist,9/24 - 9/26,1254 RV,40,55,-15
+152,Reuters/IpsosReuters,9/22 - 9/26,3429 A,38,57,-19
+153,PPP (D)PPP (D),9/22 - 9/25,865 RV,42,53,-11
+154,QuinnipiacQuinnipiac,9/21 - 9/26,1412 RV,36,57,-21
+155,CBS NewsCBS News,9/21 - 9/24,1202 A,35,55,-20
+156,ABC News/Wash PostABC/WP,9/18 - 9/21,RV,42,54,-12
+157,CNNCNN,9/17 - 9/20,RV,42,53,-11
+158,Economist/YouGovEconomist,9/17 - 9/19,1292 RV,43,51,-8
+159,MonmouthMonmouth,9/15 - 9/19,857 RV,42,48,-6
+160,Reuters/IpsosReuters,9/15 - 9/19,1557 A,39,55,-16
+161,NBC News/Wall St. JrnlNBC/WSJ,9/14 - 9/18,900 A,43,52,-9
+162,MaristMarist,9/11 - 9/13,1009 RV,41,50,-9
+163,Economist/YouGovEconomist,9/10 - 9/12,1313 RV,42,54,-12
+164,Reuters/IpsosReuters,9/8 - 9/12,1669 A,35,59,-24
+165,Economist/YouGovEconomist,9/3 - 9/5,1309 RV,42,54,-12
+166,Reuters/IpsosReuters,9/1 - 9/5,1672 A,40,57,-17
+167,FOX NewsFOX News,8/27 - 8/29,1006 RV,41,55,-14
+168,Economist/YouGovEconomist,8/27 - 8/29,1278 RV,40,55,-15
+169,IBD/TIPPIBD/TIPP,8/23 - 8/31,905 A,38,57,-19
+170,Reuters/IpsosReuters,8/25 - 8/29,1767 A,37,58,-21
+171,Economist/YouGovEconomist,8/20 - 8/22,1327 RV,40,54,-14
+172,Reuters/IpsosReuters,8/18 - 8/22,2744 A,36,59,-23
+173,QuinnipiacQuinnipiac,8/17 - 8/22,1514 RV,35,59,-24
+174,PPP (D)PPP (D),8/18 - 8/21,887 RV,40,53,-13
+175,ABC News/Wash PostABC/WP,8/16 - 8/20,RV,39,58,-19
+176,GWU/BattlegroundGWU/Battleground,8/13 - 8/17,1000 RV,42,53,-11
+177,Pew ResearchPew,8/8 - 8/21,4971 A,36,63,-27
+178,NPR/PBS/MaristNPR/PBS/Marist,8/14 - 8/15,859 RV,38,51,-13
+179,Economist/YouGovEconomist,8/13 - 8/15,1291 RV,42,54,-12
+180,Reuters/IpsosReuters,8/11 - 8/15,1587 A,35,58,-23
+181,QuinnipiacQuinnipiac,8/9 - 8/15,1361 RV,39,57,-18
+182,MonmouthMonmouth,8/10 - 8/14,706 RV,42,49,-7
+183,MaristMarist,8/8 - 8/12,883 RV,37,55,-18
+184,Economist/YouGovEconomist,8/6 - 8/8,1303 RV,40,54,-14
+185,Reuters/IpsosReuters,8/4 - 8/8,1671 A,37,59,-22
+186,CBS NewsCBS News,8/3 - 8/6,1111 A,36,58,-22
+187,CNNCNN,8/3 - 8/6,RV,40,56,-16
+188,IBD/TIPPIBD/TIPP,7/28 - 8/5,904 A,32,59,-27
+189,Economist/YouGovEconomist,7/31 - 8/1,1329 RV,39,55,-16
+190,Reuters/IpsosReuters,7/28 - 8/1,3130 A,37,59,-22
+191,QuinnipiacQuinnipiac,7/27 - 8/1,1125 RV,33,61,-28
+192,Economist/YouGovEconomist,7/23 - 7/25,1282 RV,41,54,-13
+193,Reuters/IpsosReuters,7/21 - 7/25,1532 A,35,59,-24
+194,FOX NewsFOX News,7/16 - 7/18,1020 RV,41,53,-12
+195,PPP (D)PPP (D),7/14 - 7/17,836 RV,41,55,-14
+196,Economist/YouGovEconomist,7/15 - 7/18,1273 RV,39,56,-17
+197,Reuters/IpsosReuters,7/14 - 7/18,1470 A,38,58,-20
+198,MonmouthMonmouth,7/13 - 7/16,713 RV,40,52,-12
+199,ABC News/Wash PostABC/WP,7/10 - 7/13,RV,39,56,-17
+200,BloombergBloomberg,7/8 - 7/12,1001 A,40,56,-16
+201,Economist/YouGovEconomist,7/9 - 7/11,1284 RV,41,52,-11
+202,Reuters/IpsosReuters,7/7 - 7/11,1530 A,40,56,-16
+203,Economist/YouGovEconomist,7/3 - 7/4,1323 RV,41,53,-12
+204,Reuters/IpsosReuters,6/30 - 7/4,1600 A,38,57,-19
+205,IBD/TIPPIBD/TIPP,6/23 - 6/29,900 A,37,58,-21
+206,FOX NewsFOX News,6/25 - 6/27,1017 RV,44,50,-6
+207,Economist/YouGovEconomist,6/25 - 6/27,1295 RV,42,53,-11
+208,Rasmussen ReportsRasmussen,6/25 - 6/27,1500 LV,46,54,-8
+209,USA Today/SuffolkUSA Today,6/24 - 6/27,1000 RV,42,53,-11
+210,Reuters/IpsosReuters,6/23 - 6/27,1620  A,35,58,-23
+211,QuinnipiacQuinnipiac,6/22 - 6/27,1212 RV,40,55,-15
+212,NPR/PBS/MaristNPR/PBS/Marist,6/21 - 6/25,995 RV,38,53,-15
+213,Economist/YouGovEconomist,6/18 - 6/20,1277 RV,43,51,-8
+214,Rasmussen ReportsRasmussen,6/18 - 6/20,1500 LV,45,55,-10
+215,NBC News/Wall St. JrnlNBC/WSJ,6/17 - 6/20,900 A,40,55,-15
+216,Reuters/IpsosReuters,6/16 - 6/20,1554 A,38,59,-21
+217,CBS NewsCBS News,6/15 - 6/18,1117 A,36,57,-21
+218,Pew ResearchPew,6/8 - 6/18,2097 RV,42,54,-12
+219,GallupGallup,6/11 - 6/13,1500 A,36,59,-23
+220,Rasmussen ReportsRasmussen,6/11 - 6/13,1500 LV,45,55,-10
+221,Economist/YouGovEconomist,6/11 - 6/13,1310 RV,42,51,-9
+222,Reuters/IpsosReuters,6/9 - 6/13,1492 A,40,56,-16
+223,CNBCCNBC,6/9 - 6/12,800 A,37,51,-14
+224,PPP (D)PPP (D),6/9 - 6/11,811 RV,41,52,-11
+225,Rasmussen ReportsRasmussen,6/4 - 6/6,1500 LV,45,55,-10
+226,Economist/YouGovEconomist,6/4 - 6/6,1288 RV,40,56,-16
+227,Reuters/IpsosReuters,6/2 - 6/6,2371 A,38,58,-20
+228,QuinnipiacQuinnipiac,5/31 - 6/6,1361 RV,34,57,-23
+229,IBD/TIPPIBD/TIPP,5/30 - 6/6,903 A,37,55,-18
+230,Rasmussen ReportsRasmussen,5/28 - 5/30,1500 LV,43,57,-14
+231,Economist/YouGovEconomist,5/27 - 5/30,1269 RV,40,53,-13
+232,Reuters/IpsosReuters,5/26 - 5/30,2081 A,40,55,-15
+233,FOX NewsFOX News,5/21 - 5/23,1011 RV,40,53,-13
+234,GallupGallup,5/21 - 5/23,1500 A,39,55,-16
+235,Rasmussen ReportsRasmussen,5/21 - 5/23,1500 LV,48,52,-4
+236,Economist/YouGovEconomist,5/20 - 5/23,1276 RV,40,53,-13
+237,Reuters/IpsosReuters,5/19 - 5/23,2000 A,37,57,-20
+238,QuinnipiacQuinnipiac,5/17 - 5/23,1404 RV,37,55,-18
+239,MonmouthMonmouth,5/13 - 5/17,896 RV,39,54,-15
+240,GallupGallup,5/14 - 5/16,1500 A,38,57,-19
+241,Rasmussen ReportsRasmussen,5/14 - 5/16,1500 LV,44,56,-12
+242,Economist/YouGovEconomist,5/13 - 5/16,1298 RV,39,54,-15
+243,Reuters/IpsosReuters,5/12 - 5/16,1868 A,39,55,-16
+244,PPP (D)PPP (D),5/12 - 5/14,692 RV,40,54,-14
+245,NBC News/Wall St. JrnlNBC/WSJ,5/11 - 5/13,800 A,39,54,-15
+246,GallupGallup,5/7 - 5/9,1500 A,40,53,-13
+247,Rasmussen ReportsRasmussen,5/7 - 5/9,1500 LV,47,53,-6
+248,Economist/YouGovEconomist,5/6 - 5/9,1287 RV,43,52,-9
+249,Reuters/IpsosReuters,5/5 - 5/9,1830 A,43,52,-9
+250,QuinnipiacQuinnipiac,5/4 - 5/9,1078 RV,36,58,-22
+251,GallupGallup,4/30 - 5/2,1500 A,42,52,-10
+252,Rasmussen ReportsRasmussen,4/30 - 5/2,1500 LV,49,51,-2
+253,IBD/TIPPIBD/TIPP,4/28 - 5/4,904 A,39,54,-15
+254,Economist/YouGovEconomist,4/29 - 5/2,1255 RV,46,47,-1
+255,Reuters/IpsosReuters,4/28 - 5/2,2214 A,44,51,-7
+256,FOX NewsFOX News,4/23 - 4/25,1009 RV,45,48,-3
+257,Economist/YouGovEconomist,4/23 - 4/25,1295 RV,45,49,-4
+258,GallupGallup,4/23 - 4/25,1500 A,39,56,-17
+259,Rasmussen ReportsRasmussen,4/23 - 4/25,1500 LV,46,54,-8
+260,CBS NewsCBS News,4/21 - 4/24,1214 A,41,53,-12
+261,Reuters/IpsosReuters,4/21 - 4/25,2165 A,41,53,-12
+262,CNN/ORCCNN/ORC,4/22 - 4/25,1009 A,44,54,-10
+263,ABC News/Wash PostABC/WP,4/17 - 4/20,1004 A,42,53,-11
+264,NBC News/Wall St. JrnlNBC/WSJ,4/17 - 4/20,900 A,40,54,-14
+265,PPP (D)PPP (D),4/17 - 4/18,648 RV,43,50,-7
+266,Rasmussen ReportsRasmussen,4/16 - 4/18,1500 LV,48,52,-4
+267,GallupGallup,4/15 - 4/18,1500 A,42,52,-10
+268,Economist/YouGovEconomist,4/15 - 4/18,1291 RV,44,50,-6
+269,QuinnipiacQuinnipiac,4/12 - 4/18,1062 RV,40,56,-16
+270,Reuters/IpsosReuters,4/13 - 4/17,1843 A,43,52,-9
+271,MaristMarist,4/11 - 4/12,869 RV,39,49,-10
+272,Economist/YouGovEconomist,4/10 - 4/11,1330 RV,43,52,-9
+273,GallupGallup,4/9 - 4/11,1500 A,41,52,-11
+274,Rasmussen ReportsRasmussen,4/9 - 4/11,1500 LV,47,53,-6
+275,CBS NewsCBS News,4/7 - 4/9,1006 A,43,49,-6
+276,Pew ResearchPew,4/5 - 4/11,1243 RV,42,52,-10
+277,CNBCCNBC,4/3 - 4/6,804 A,39,48,-9
+278,GallupGallup,4/2 - 4/4,1500 A,42,52,-10
+279,Rasmussen ReportsRasmussen,4/2 - 4/4,1500 LV,46,54,-8
+280,Economist/YouGovEconomist,4/2 - 4/4,1331 RV,43,50,-7
+281,Reuters/IpsosReuters,3/31 - 4/4,2149 A,46,50,-4
+282,QuinnipiacQuinnipiac,3/30 - 4/3,1171 RV,35,57,-22
+283,PPP (D)PPP (D),3/27 - 3/28,677 RV,40,53,-13
+284,IBD/TIPPIBD/TIPP,3/24 - 3/30,904 A,34,56,-22
+285,GallupGallup,3/26 - 3/28,1500 A,35,59,-24
+286,Rasmussen ReportsRasmussen,3/26 - 3/28,1500 LV,44,56,-12
+287,Economist/YouGovEconomist,3/26 - 3/28,1271 RV,45,50,-5
+288,CBS NewsCBS News,3/25 - 3/28,1088 A,40,52,-12
+289,Reuters/IpsosReuters,3/24 - 3/28,1646 A,44,49,-5
+290,McClatchy/MaristMcClatchy,3/22 - 3/27,906 RV,38,51,-13
+291,GallupGallup,3/19 - 3/21,1500 A,40,55,-15
+292,Rasmussen ReportsRasmussen,3/19 - 3/21,1500 LV,46,54,-8
+293,Economist/YouGovEconomist,3/19 - 3/21,1296 RV,44,49,-5
+294,Reuters/IpsosReuters,3/17 - 3/21,1606 A,47,47,Tie 
+295,QuinnipiacQuinnipiac,3/16 - 3/21,1056  RV,37,56,-19
+296,Economist/YouGovEconomist,3/13 - 3/14,1320 RV,44,49,-5
+297,FOX NewsFOX News,3/12 - 3/14,1008 RV,43,51,-8
+298,GallupGallup,3/12 - 3/14,1500 A,40,54,-14
+299,Rasmussen ReportsRasmussen,3/12 - 3/14,1500 LV,45,54,-9
+300,Reuters/IpsosReuters,3/10 - 3/14,1750 A,45,49,-4
+301,PPP (D)PPP (D),3/10 - 3/12,808 RV,43,50,-7
+302,Economist/YouGovEconomist,3/6 - 3/7,1359 RV,44,50,-6
+303,GallupGallup,3/5 - 3/7,1500 A,42,53,-11
+304,Rasmussen ReportsRasmussen,3/5 - 3/7,1500 LV,49,51,-2
+305,Reuters/IpsosReuters,3/3 - 3/7,1662 A,48,46,+2
+306,QuinnipiacQuinnipiac,3/2 - 3/6,1283 RV,41,52,-11
+307,MonmouthMonmouth,3/2 - 3/5,722 RV,44,46,-2
+308,USA Today/SuffolkUSA Today,3/1 - 3/5,1000 RV,47,44,+3
+309,CNN/ORCCNN/ORC,3/1 - 3/4,1025 A,45,52,-7
+310,Economist/YouGovEconomist,2/25 - 3/1,1251 RV,45,51,-6
+311,IBD/TIPPIBD/TIPP,2/24 - 3/4,909 A,41,53,-12
+312,GallupGallup,2/26 - 2/28,1500 A,43,52,-9
+313,Rasmussen ReportsRasmussen,2/26 - 2/28,1500 LV,50,50,Tie 
+314,Reuters/IpsosReuters,2/24 - 2/28,1847 A,46,48,-2
+315,PPP (D)PPP (D),2/21 - 2/22,941 RV,45,48,-3
+316,NBC News/Wall St. JrnlNBC/WSJ,2/18 - 2/22,1000 A,44,48,-4
+317,CBS NewsCBS News,2/17 - 2/21,1280 A,39,51,-12
+318,GallupGallup,2/19 - 2/21,1500 A,42,52,-10
+319,Rasmussen ReportsRasmussen,2/19 - 2/21,1500 LV,51,49,+2
+320,Reuters/IpsosReuters,2/17 - 2/21,2338 A,45,50,-5
+321,Economist/YouGovEconomist,2/18 - 2/20,1198 RV,48,48,Tie 
+322,QuinnipiacQuinnipiac,2/16 - 2/21,1323 RV,38,55,-17
+323,McClatchy/MaristMcClatchy,2/15 - 2/19,865 RV,41,49,-8
+324,GallupGallup,2/12 - 2/14,1500 A,40,53,-13
+325,Economist/YouGovEconomist,2/12 - 2/14,1100 RV,46,49,-3
+326,Rasmussen ReportsRasmussen,2/12 - 2/14,1500 LV,53,47,+6
+327,FOX NewsFOX News,2/11 - 2/13,1013 RV,48,47,+1
+328,Reuters/IpsosReuters,2/10 - 2/14,1774 A,46,50,-4
+329,Pew ResearchPew,2/7 - 2/12,1246 RV,42,54,-12
+330,PPP (D)PPP (D),2/7 - 2/8,712 RV,43,53,-10
+331,Economist/YouGovEconomist,2/5 - 2/7,1315 RV,44,49,-5
+332,GallupGallup,2/5 - 2/7,1500 A,43,52,-9
+333,EmersonEmerson,2/5 - 2/6,617 RV,48,47,+1
+334,Rasmussen ReportsRasmussen,2/5 - 2/7,1500 LV,53,47,+6
+335,Reuters/IpsosReuters,2/3 - 2/7,1896 A,48,47,+1
+336,QuinnipiacQuinnipiac,2/2 - 2/6,1155 RV,42,51,-9
+337,CBS NewsCBS News,2/1 - 2/2,1019 A,40,48,-8
+338,CNN/ORCCNN/ORC,1/31 - 2/2,1002 A,44,53,-9
+339,IBD/TIPPIBD/TIPP,1/27 - 2/2,885 A,42,48,-6
+340,PPP (D)PPP (D),1/30 - 1/31,725 RV,47,49,-2
+341,GallupGallup,1/29 - 1/31,1500 A,43,52,-9
+342,Rasmussen ReportsRasmussen,1/29 - 1/31,1500 LV,53,47,+6
+343,Economist/YouGovEconomist,1/28 - 1/31,1278 RV,47,45,+2
+344,Reuters/IpsosReuters,1/27 - 1/31,3151 A,46,47,-1
+345,Economist/YouGovEconomist,1/23 - 1/25,2312 RV,43,39,+4
+346,PPP (D)PPP (D),1/23 - 1/24,1043 RV,44,44,Tie 
+347,QuinnipiacQuinnipiac,1/20 - 1/25,1190 RV,36,44,-8
+348,GallupGallup,1/22 - 1/24,1500 A,46,45,+1
+349,Rasmussen ReportsRasmussen,1/22 - 1/24,1500 LV,57,43,+14
+350,Reuters/IpsosReuters,1/20 - 1/24,1633 A,43,45,-2

@@ -36,11 +36,11 @@ def convert_to_desired_date_format(year, month, day):
     ##The Google CSE does not like the 
     ##return (year + month + day)
     
-def generate_google_format_date(year, month_and_day):
+def generate_google_format_date(year, month, day):
     ##Google expects that months and days have two digits, 
     ##convert them if they arent
-    new_month = convert_to_two_digit_date(month_and_day[0])
-    new_day   = convert_to_two_digit_date(month_and_day[1])
+    new_month = convert_to_two_digit_date(month)
+    new_day   = convert_to_two_digit_date(day)
     return convert_to_desired_date_format(year, new_month, new_day)
     
 def modify_dates_to_contain_year(date_data, latest_year):
@@ -65,7 +65,7 @@ def modify_dates_to_contain_year(date_data, latest_year):
                 else:
                     end_date_last_year = True
                     
-            new_date = generate_google_format_date(temp_year, month_day)
+            new_date = generate_google_format_date(temp_year, month_day[0], month_day[1])
             if curr_num == 0:
                 polling_dates['StartDate'].append(new_date)
             else:
@@ -84,11 +84,10 @@ def modify_dates_to_contain_year(date_data, latest_year):
             year_modified = False
     return polling_dates
 
-def build_google_query(query, start_date, end_date, num_requests):
-    service = build("customsearch", "v1",
-                    developerKey=devKey)
+def build_google_query(service, query, start_date, end_date, num_requests):
     date_range = "date:r:" + start_date + ":" + end_date
     ##may need start to limit
+    ##num requests defaults to 10 can be 1 through 10
     result = service.cse().list(q=query, cx=devcx, sort=date_range, num = num_requests).execute()
     return result
 
@@ -113,16 +112,20 @@ def get_search_start_and_end_date(search_start, search_end):
     search_end   = str((search_end - timedelta(days = delta_days)).date())
     return search_start, search_end
 
-def request_and_write_google_results(poll_df, out_dir):
+def request_and_write_google_results(poll_df, out_dir, num_requests):
     rows, _ = poll_df.shape
+    
+    service = build("customsearch", "v1",
+                    developerKey=devKey)
+    
     for row in range(rows):
         new_file = (out_dir + '\\' + my_query +  reuters_df.iloc[row]['StartDate']+ '_' + reuters_df.iloc[row]['EndDate'] +'.txt')
         ##We should search from the the amount of days the poll lasted prior to the start, through the start
         search_start, search_end = get_search_start_and_end_date(reuters_df.iloc[row]['StartDate'], reuters_df.iloc[row]['EndDate'])
         ##For our purposes, there appear to be 3 important items, the title for each item, the snippet and the link (technically not important)
         with open(new_file, 'w') as curr_file:
-            results = build_google_query(my_query, search_start.replace('-',''), search_end.replace('-',''), num_requests)
             curr_file.write('Link\tTitle\tSnippet\n')
+            results = build_google_query(service, my_query, search_start.replace('-',''), search_end.replace('-',''), num_requests)
             for items in results['items']:
                 curr_file.write(items['link'] +'\t' + clean_text(items['title']) + '\t' + clean_text(items['snippet']) + '\n')
 
@@ -189,7 +192,14 @@ def build_word_cloud(polling_df, out_dir, stop_words):
 if __name__ == "__main__":
     my_query = 'Donald Trump'
     url = "https://www.realclearpolitics.com/epolls/other/president_trump_job_approval-6179.html"
-    out_dir = "C:\Users\mitch\Desktop\Masters\DataMiningI\DataMiningProject\ApprovalPredictions\GoogleRequests"
+    #out_dir = "C:\Users\mitch\Desktop\Masters\DataMiningI\DataMiningProject\ApprovalPredictions\GoogleRequests"
+    out_dir = "C:\Users\mitch\Desktop\Masters\DataMiningI\DataMiningProject\ApprovalPredictions\TestExtraRequests"
+    polling_data_framename = 'polling_dataframe.txt'
+    #num_requests = 10
+    num_requests = 10
+    collect_new_data = False
+    populate_wordcloud = True
+    
     stop_words = ['Donald', 'Trump', 'President', 'Washington', 
                   'President', 'York', 'Jr', 'AP', 'White', 'House',
                   'Monday', 'Tuesday', 'Wednesday', 
@@ -202,11 +212,13 @@ if __name__ == "__main__":
     ##1st table in page index 0 is only recent polls, 2nd table index 1 is all data.
     table_index = 1
     latest_year = '2018'
-    num_requests = 10
-    collect_new_data = False
-    populate_wordcloud = True
     
-    polling_df = parse_html_for_table(url, table_index)
+    if collect_new_data:
+        polling_df = parse_html_for_table(url, table_index)
+        polling_df.to_csv(path_or_buf = out_dir + '\\' + polling_data_framename)
+    else:
+        polling_df = pd.DataFrame.from_csv(path = out_dir + '\\' + polling_data_framename)
+        
     polling_dates = modify_dates_to_contain_year(polling_df['Date'], latest_year)
     
     for keys in polling_dates.keys():
@@ -216,7 +228,7 @@ if __name__ == "__main__":
     ##Reuters is most common Pollster
     reuters_df = polling_df[polling_df['Poll'] == 'Reuters/IpsosReuters']
     if collect_new_data:
-        request_and_write_google_results(reuters_df, out_dir)
+        request_and_write_google_results(reuters_df, out_dir, num_requests)
     
     if populate_wordcloud:
         build_word_cloud(reuters_df, out_dir, stop_words)
