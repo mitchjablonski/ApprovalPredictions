@@ -51,8 +51,10 @@ def modify_dates_to_contain_year(date_data, latest_year):
     year_modified    = False
     ##Desired format YYYY-MM-DD
     for dates in date_data:
-        date_list = dates.split()
-        date_list = [date_list[0], date_list[2]]
+        #date_list = dates.split()
+        #date_list = [date_list[0], date_list[2]]
+        ##Replace the - between our data, and split the data.
+        date_list = dates.replace('-','').split()
         #item 1 in our dateList is our start poll, 2 is our end poll
         for curr_num, month_day in enumerate(date_list):
             month_day = month_day.split('/')
@@ -85,6 +87,7 @@ def modify_dates_to_contain_year(date_data, latest_year):
     return polling_dates
 
 def build_google_query(service, query, start_date, end_date, num_requests):
+    ##This is the datrange format that the google CSE api expects it
     date_range = "date:r:" + start_date + ":" + end_date
     ##may need start to limit
     ##num requests defaults to 10 can be 1 through 10
@@ -208,7 +211,9 @@ if __name__ == "__main__":
                   'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 
                   'Nov', 'Dec', 'say', 'said', 'talk', 
                   'latest', 'sign', 'first', 'wants', 
-                  'day', 'tell', 'second', 'Associated', 'Press']
+                  'day', 'tell', 'second', 'Associated', 
+                  'Press', 'new', 'will', 'call', 
+                  'times', 'local', 'one', 'says', 'calls']
     ##1st table in page index 0 is only recent polls, 2nd table index 1 is all data.
     table_index = 1
     latest_year = '2018'
