@@ -19,6 +19,12 @@ from wordcloud import WordCloud, STOPWORDS
 import sys
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
+from nltk.classify import NaiveBayesClassifier
+from nltk.corpus import subjectivity
+from nltk.sentiment import SentimentAnalyzer
+from nltk.sentiment.util import *
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+from sklearn.model_selection import train_test_split
 
 config = {}
 execfile("C:\Users\mitch\Desktop\Masters\DataMiningI\DataMiningProject\config.py", config)
@@ -250,19 +256,51 @@ def Main(my_query, url, out_dir, polling_data_framename,
     if populate_wordcloud:
         build_word_cloud(reuters_df, out_dir, stop_words)
     
+    reuters_df = personal_sentiment_analysis(reuters_df, out_dir, positive_words, negative_words)
+    #nltk_sentiment_analysis(reuters_df, out_dir)
+    determine_prediction_accuracy_and_plot(reuters_df, out_dir)
+    create_data_report(reuters_df, out_dir)
+    return reuters_df #predict_approval_rating_change(reuters_df, out_dir, positive_words, negative_words)
+
+def format_sentence_for_nltk(sent):
+    return({word: True for word in nltk.word_tokenize(sent)})
+
+def determine_pos_neg_split_for_nltk(data, data_result):
+    snippet_pos = []
+    snippet_neg = []
+    title_pos   = []
+    title_neg   = []
+    rows,_ = data.shape
+    for row in range(rows):
+        filepath = (out_dir + '\\' + my_query +  data.iloc[row]['StartDate']+ '_' + data.iloc[row]['EndDate'] +'.txt')
+        data = pd.read_csv(filepath, delimiter="\t")
+        snippet_words = get_words_from_dataframe(data, 'Snippet')
+        title_words   = get_words_from_dataframe(data, 'Title')
+        if data_result.iloc[row]:
+            snippet_pos.append(format_sentence_for_nltk(snippet_words), 'pos')
+            title_pos.append(format_sentence_for_nltk(title_words), 'pos')
+        else:
+            snippet_neg.append(format_sentence_for_nltk(snippet_words), 'neg')
+            title_neg.append(format_sentence_for_nltk(title_words), 'neg')
+    return ((title_pos+title_neg), (snippet_pos+snippet_neg))
+def nltk_sentiment_analysis(polling_df, out_dir):
+    X_train, X_test, y_train, y_test = train_test_split(polling_df[['StartDate','EndDate']], polling_df['ApprovalPosChange'])
+    title_train_data, snippet_train_data = determine_pos_neg_split_for_nltk(X_train, y_train)
+    snippet_class = NaiveBayesClassifier.train(snippet_train_data)
+    title_class   = NaiveBayesClassifier.train(title_train_data)
+    title_test_data, snippet_test_data = determine_pos_neg_split_for_nltk(X_test, y_test)
+    print(snippet_class.classify(format_sentence_for_nltk(snippet_test_data)))
+    print(title_class.classify(format_sentence_for_nltk(title_test_data)))
+    
+def personal_sentiment_analysis(reuters_df, out_dir, positive_words, negative_words):
     reuters_df['ApprovalChange'] = reuters_df.loc[:,'Approve'].diff().fillna(0)
     reuters_df['ApprovalPosChange'] = (reuters_df.loc[:,'ApprovalChange'] >= 0)
-    #reuters_df['SnippetPred'] = 0
-    #reuters_df['TitlePred'] = 0
-    #temp_df = 
     sentiment_values = predict_approval_rating_change(reuters_df, out_dir, positive_words, negative_words)
     reuters_df['SnippetChange'] = sentiment_values['snippet_words']
     reuters_df['SnippetPosPred'] = (reuters_df.loc[:,'SnippetChange'] >= 0)
     reuters_df['TitleChange'] = sentiment_values['title_words']
     reuters_df['TitlePosPred'] = (reuters_df.loc[:,'TitleChange'] >= 0)
-    determine_prediction_accuracy_and_plot(reuters_df, out_dir)
-    create_data_report(reuters_df, out_dir)
-    return reuters_df #predict_approval_rating_change(reuters_df, out_dir, positive_words, negative_words)
+    return reuters_df
 
 def determine_prediction_accuracy_and_plot(polling_results_df, out_dir):
     polling_results_df['SnippetAccuracy'] = (polling_results_df.loc[:,'SnippetPosPred'] == polling_results_df.loc[:,'ApprovalPosChange'])
@@ -273,12 +311,14 @@ def plot_accuracy_data(polling_results_df, out_dir):
     x = [datetime.strptime(d,'%Y-%m-%d').date() for d in polling_results_df['StartDate']]
     plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%m/%d/%Y'))
     #plt.gca().xaxis.set_major_locator(mdates.DayLocator())
-    plt.plot(x,modified_polling_df['TitleAccuracy'])
+    plt.plot(x,modified_polling_df['TitleAccuracy'], label = 'Title Accuracy')
     plt.gcf().autofmt_xdate()
     plt.title('Using Article Title Prediction Accuracy')
     plt.savefig(out_dir + '//titleaccuracyplot.png', dpi=300)
-    plt.plot(x,modified_polling_df['SnippetAccuracy'])
+    plt.plot(x,modified_polling_df['SnippetAccuracy'], label = 'Snippet Accuracy')
     plt.title('Comparing Title and Snippet Prediction Accuracy')
+    leg = plt.legend(loc = 2)
+    leg.get_frame().set_alpha(0.1)
     plt.savefig(out_dir + '//snippet_and_titleaccuracyplot.png', dpi=300)
     plt.clf()
     plt.title('Using Snippet Prediction Accuracy')
@@ -296,6 +336,7 @@ def create_data_report(data,out_dir):
             snippet_accuracy = (snippet_correct_rows/total_rows)*100
             curr_file.write(str(total_rows) +'\t' + str(title_correct_rows) + '\t' + str(title_accuracy)
                             + '\t' + str(snippet_correct_rows) + '\t' + str(snippet_accuracy))
+            
 if __name__ == "__main__":
     my_query = 'Donald Trump'
     url = "https://www.realclearpolitics.com/epolls/other/president_trump_job_approval-6179.html"
