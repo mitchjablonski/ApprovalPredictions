@@ -7,7 +7,7 @@ Created on Sat Apr 07 09:58:31 2018
 #from googleapiclient.discovery import build
 
 #from apiclient.discovery import build
-
+from __future__ import division
 from apiclient.discovery import build
 import urllib2
 from bs4 import BeautifulSoup
@@ -123,9 +123,9 @@ def request_and_write_google_results(poll_df, out_dir, num_requests):
                     developerKey=devKey)
     
     for row in range(rows):
-        new_file = (out_dir + '\\' + my_query +  reuters_df.iloc[row]['StartDate']+ '_' + reuters_df.iloc[row]['EndDate'] +'.txt')
+        new_file = (out_dir + '\\' + my_query +  poll_df.iloc[row]['StartDate']+ '_' + poll_df.iloc[row]['EndDate'] +'.txt')
         ##We should search from the the amount of days the poll lasted prior to the start, through the start
-        search_start, search_end = get_search_start_and_end_date(reuters_df.iloc[row]['StartDate'], reuters_df.iloc[row]['EndDate'])
+        search_start, search_end = get_search_start_and_end_date(poll_df.iloc[row]['StartDate'], poll_df.iloc[row]['EndDate'])
         ##For our purposes, there appear to be 3 important items, the title for each item, the snippet and the link (technically not important)
         with open(new_file, 'w') as curr_file:
             curr_file.write('Link\tTitle\tSnippet\n')
@@ -261,6 +261,7 @@ def Main(my_query, url, out_dir, polling_data_framename,
     reuters_df['TitleChange'] = sentiment_values['title_words']
     reuters_df['TitlePosPred'] = (reuters_df.loc[:,'TitleChange'] >= 0)
     determine_prediction_accuracy_and_plot(reuters_df, out_dir)
+    create_data_report(reuters_df, out_dir)
     return reuters_df #predict_approval_rating_change(reuters_df, out_dir, positive_words, negative_words)
 
 def determine_prediction_accuracy_and_plot(polling_results_df, out_dir):
@@ -284,6 +285,17 @@ def plot_accuracy_data(polling_results_df, out_dir):
     plt.plot(x,modified_polling_df['SnippetAccuracy'])
     plt.savefig(out_dir + '//snippetaccuracyplot.png', dpi=300)
     
+def create_data_report(data,out_dir):
+    total_rows,_ = data.shape
+    snippet_correct_rows,_ = data[data['SnippetPosPred'] == True].shape
+    title_correct_rows,_ = data[data['TitlePosPred'] == True].shape
+    new_file = out_dir + '\\' +'output_data_overall_report.txt'
+    with open(new_file, 'w') as curr_file:
+            curr_file.write('Total_Data_Eval\tTitle_Data_Raw_Correct\tTitle_Data_Accuracy\tSnippet_Data_Raw_Correct\tSnippet_Data_Accuracy\n')
+            title_accuracy = (title_correct_rows/total_rows)*100
+            snippet_accuracy = (snippet_correct_rows/total_rows)*100
+            curr_file.write(str(total_rows) +'\t' + str(title_correct_rows) + '\t' + str(title_accuracy)
+                            + '\t' + str(snippet_correct_rows) + '\t' + str(snippet_accuracy))
 if __name__ == "__main__":
     my_query = 'Donald Trump'
     url = "https://www.realclearpolitics.com/epolls/other/president_trump_job_approval-6179.html"
