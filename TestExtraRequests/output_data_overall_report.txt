@@ -1,2 +1,2 @@
 Total_Data_Eval	Title_Data_Raw_Correct	Title_Data_Accuracy	Snippet_Data_Raw_Correct	Snippet_Data_Accuracy
-62	45	72.5806451613	40	64.5161290323
+62	45	0	40	0
