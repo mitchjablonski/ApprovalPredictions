@@ -4,6 +4,7 @@ Created on Mon Apr 16 19:27:46 2018
 
 @author: mitch
 """
+from __future__ import division
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
@@ -18,18 +19,29 @@ def plot_accuracy_data(polling_results_df, out_dir):
     x = [datetime.strptime(d,'%Y-%m-%d').date() for d in polling_results_df['StartDate']]
     plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%m/%d/%Y'))
     #plt.gca().xaxis.set_major_locator(mdates.DayLocator())
-    plt.plot(x,polling_results_df['TitleAccuracy'], label = 'Title Accuracy')
+    plt.plot(x,polling_results_df['TitleAccuracy'], label = 'Title Change')
     plt.gcf().autofmt_xdate()
-    plt.title('Using Article Title Prediction Accuracy')
+    plt.title('Using Article Title Predicted Change')
+    plt.plot(x,polling_results_df['ApprovalPosChange'], label = 'Actual Change')
+    leg = plt.legend(loc = 2)
+    leg.get_frame().set_alpha(0.1)
     plt.savefig(out_dir + '//titleaccuracyplot.png', dpi=300)
-    plt.plot(x,polling_results_df['SnippetAccuracy'], label = 'Snippet Accuracy')
-    plt.title('Comparing Title and Snippet Prediction Accuracy')
+    
+    plt.clf()
+    plt.plot(x,polling_results_df['TitleAccuracy'], label = 'Title Change')
+    plt.gcf().autofmt_xdate()
+    plt.plot(x,polling_results_df['SnippetAccuracy'], label = 'Snippet Change')
+    plt.title('Comparing Title and Snippet Predicted Changes')
     leg = plt.legend(loc = 2)
     leg.get_frame().set_alpha(0.1)
     plt.savefig(out_dir + '//snippet_and_titleaccuracyplot.png', dpi=300)
+    
     plt.clf()
-    plt.title('Using Snippet Prediction Accuracy')
+    plt.title('Using Snippet Predicted Change')
     plt.plot(x,polling_results_df['SnippetAccuracy'])
+    plt.plot(x,polling_results_df['ApprovalPosChange'], label = 'Actual Change')
+    leg = plt.legend(loc = 2)
+    leg.get_frame().set_alpha(0.1)
     plt.savefig(out_dir + '//snippetaccuracyplot.png', dpi=300)
     
 def create_data_report(data,out_dir):

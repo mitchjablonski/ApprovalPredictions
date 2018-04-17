@@ -12,15 +12,16 @@ from apiclient.discovery import build
 #import urllib2
 #from bs4 import BeautifulSoup
 import pandas as pd
-from collections import defaultdict
+from collections import defaultdict, Counter
 from datetime import datetime, timedelta
 from string import punctuation
 from wordcloud import WordCloud, STOPWORDS
-import sys
 import matplotlib.pyplot as plt
-import matplotlib.dates as mdates
 import post_process_and_plot as post_process
 import parse_and_clean_html_table as parse_and_clean
+from sklearn.model_selection import train_test_split
+from nltk.stem.snowball import SnowballStemmer
+
 
 config = {}
 execfile("C:\Users\mitch\Desktop\Masters\DataMiningI\DataMiningProject\config.py", config)
@@ -76,7 +77,10 @@ def request_and_write_google_results(poll_df, out_dir, num_requests):
 
 def clean_punctuation(words):
     for c in punctuation:
-        words= words.replace(c," ") 
+        if '\'' in c:
+            words = words.replace(c, '')
+        else:
+            words= words.replace(c," ") 
     return words
 
 def save_word_cloud(words, filename):
@@ -110,10 +114,12 @@ def build_word_cloud(polling_df, out_dir, stop_words):
         filepath = (out_dir + '\\' + my_query +  polling_df.iloc[row]['StartDate']+ '_' + polling_df.iloc[row]['EndDate'] +'.txt')
         data = pd.read_csv(filepath, delimiter="\t")
         snippet_words += get_words_from_dataframe(data, 'Snippet')
-        title_words   +=get_words_from_dataframe(data, 'Title')
-        
-    save_word_cloud(snippet_words, 'snippet_word_cloud')
-    save_word_cloud(title_words, 'title_word_cloud')
+        title_words   += get_words_from_dataframe(data, 'Title')
+    #save_word_cloud(snippet_words, 'snippet_word_cloud')
+    #save_word_cloud(title_words, 'title_word_cloud')
+    #print("".join(stem_words(snippet_words)))
+    save_word_cloud("".join(stem_words(snippet_words)), 'stemmed_snippet_cloud')
+    save_word_cloud("".join(stem_words(title_words)), 'stemmed_title_cloud')
 
 def determine_sentiment_from_words(pos_words, neg_words, words_to_check):
     ##Less negative words count as positive for trump
@@ -123,8 +129,34 @@ def determine_sentiment_from_words(pos_words, neg_words, words_to_check):
             overall_sentiment += 1
         elif word in neg_words:
             overall_sentiment -= 1
-    #print(overall_sentiment)
     return overall_sentiment
+
+def stem_words(words_to_stem):
+    stemmer = SnowballStemmer("english")
+    words_ret = []
+    for words in words_to_stem:
+        words_ret.append(stemmer.stem(words))
+    return words_ret
+
+def determine_sentiment_auto(polling_df, out_dir):
+    X_train, X_test, y_train, y_test = train_test_split(polling_df[['StartDate','EndDate']], polling_df['ApprovalPosChange'])
+    positive_counter = Counter()
+    negative_counter = Counter()
+    for index, row in X_train.iterrows():
+        filepath = (out_dir + '\\' + my_query +  row['StartDate']+ '_' + row['EndDate'] +'.txt')
+        data = pd.read_csv(filepath, delimiter="\t")
+        snippet_words = get_words_from_dataframe(data, 'Snippet')
+        title_words   = get_words_from_dataframe(data, 'Title')
+        #test_stem = (stem_words(snippet_words.split()))
+        all_words = stem_words(snippet_words.split() + title_words.split())
+        if polling_df.loc[index, 'ApprovalPosChange'] == 1:
+            for word in all_words:
+                positive_counter[word] += 1
+        else:
+            for word in all_words:
+                ##If we don't add all -1 will be weighted equally
+                negative_counter[word] += 1
+    return (positive_counter, negative_counter)
 
 def predict_approval_rating_change(polling_data, out_dir, pos_words, neg_words):
     rows, _ = polling_data.shape
@@ -134,22 +166,20 @@ def predict_approval_rating_change(polling_data, out_dir, pos_words, neg_words):
         data = pd.read_csv(filepath, delimiter="\t")
         snippet_words = get_words_from_dataframe(data, 'Snippet')
         title_words   = get_words_from_dataframe(data, 'Title')
-        #polling_data.iloc[row]['SnippetPred'] = determine_sentiment_from_words(pos_words, neg_words, snippet_words)
         sentiment_values['snippet_words'].append(determine_sentiment_from_words(pos_words, neg_words, snippet_words))
-        #polling_data.iloc[row]['TitlePred'] = determine_sentiment_from_words(pos_words, neg_words, title_words)
         sentiment_values['title_words'].append(determine_sentiment_from_words(pos_words, neg_words, title_words))
     return sentiment_values
     
 def personal_sentiment_analysis(reuters_df, out_dir, positive_words, negative_words):
-    #reuters_df['ApprovalChange'] = reuters_df.loc[:,'Approve'].diff().fillna(0)
-    approval_change_series = reuters_df.loc[:,'Approve'].diff().fillna(0)
-    reuters_df['ApprovalChange'] = approval_change_series
+    reuters_df['ApprovalChange']    = reuters_df.loc[:,'Approve'].diff(-1).fillna(0)
     reuters_df['ApprovalPosChange'] = (reuters_df.loc[:,'ApprovalChange'] >= 0)
+    
     sentiment_values = predict_approval_rating_change(reuters_df, out_dir, positive_words, negative_words)
-    reuters_df['SnippetChange'] = sentiment_values['snippet_words']
+
+    reuters_df['SnippetChange']  = sentiment_values['snippet_words']
     reuters_df['SnippetPosPred'] = (reuters_df.loc[:,'SnippetChange'] >= 0)
-    reuters_df['TitleChange'] = sentiment_values['title_words']
-    reuters_df['TitlePosPred'] = (reuters_df.loc[:,'TitleChange'] >= 0)
+    reuters_df['TitleChange']    = sentiment_values['title_words']
+    reuters_df['TitlePosPred']   = (reuters_df.loc[:,'TitleChange'] >= 0)
     return reuters_df
 
 def main(my_query, url, out_dir, polling_data_framename, 
@@ -160,7 +190,8 @@ def main(my_query, url, out_dir, polling_data_framename,
         polling_df = parse_and_clean.parse_html_for_table(url, table_index)
         polling_df.to_csv(path_or_buf = out_dir + '\\' + polling_data_framename)
     else:
-        polling_df = pd.DataFrame.from_csv(path = out_dir + '\\' + polling_data_framename)
+        #polling_df = pd.DataFrame.from_csv(path = out_dir + '\\' + polling_data_framename)
+        polling_df = pd.read_csv(out_dir + '\\' + polling_data_framename)
         
     polling_dates = parse_and_clean.modify_dates_to_contain_year(polling_df['Date'], latest_year)
     
@@ -169,14 +200,16 @@ def main(my_query, url, out_dir, polling_data_framename,
     
     #pollsters = set(polling_df['Poll'])
     ##Reuters is most common Pollster
-    reuters_df = polling_df[polling_df['Poll'] == 'Reuters/IpsosReuters']
+    reuters_df = polling_df[polling_df['Poll'] == 'Reuters/IpsosReuters'].copy()
     if collect_new_data:
         request_and_write_google_results(reuters_df, out_dir, num_requests)
     
     if populate_wordcloud:
         build_word_cloud(reuters_df, out_dir, stop_words)
-    
     reuters_df = personal_sentiment_analysis(reuters_df, out_dir, positive_words, negative_words)
+
+    pos_count, neg_count = determine_sentiment_auto(reuters_df, out_dir)
+    print(pos_count.most_common(20),neg_count.most_common(20))
     #nltk_sentiment_analysis(reuters_df, out_dir)
     post_process.run_post_processing(reuters_df, out_dir)
 
@@ -191,7 +224,7 @@ if __name__ == "__main__":
     #num_requests = 10
     num_requests = 10
     collect_new_data = False
-    populate_wordcloud = False
+    populate_wordcloud = True
     positive_words = ['deal', 'iran', 'rally', 
                       'aid', 'won', 'top', 'mexico', 
                       'taxes', 'tax', 'plan', 'korea', 'military',
