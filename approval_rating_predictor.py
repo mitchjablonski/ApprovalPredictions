@@ -115,9 +115,8 @@ def build_word_cloud(polling_df, out_dir, stop_words):
         data = pd.read_csv(filepath, delimiter="\t")
         snippet_words += get_words_from_dataframe(data, 'Snippet')
         title_words   += get_words_from_dataframe(data, 'Title')
-    #save_word_cloud(snippet_words, 'snippet_word_cloud')
-    #save_word_cloud(title_words, 'title_word_cloud')
-    #print("".join(stem_words(snippet_words)))
+    save_word_cloud(snippet_words, 'snippet_word_cloud')
+    save_word_cloud(title_words, 'title_word_cloud')
     save_word_cloud("".join(stem_words(snippet_words)), 'stemmed_snippet_cloud')
     save_word_cloud("".join(stem_words(title_words)), 'stemmed_title_cloud')
 
@@ -224,7 +223,7 @@ if __name__ == "__main__":
     #num_requests = 10
     num_requests = 10
     collect_new_data = False
-    populate_wordcloud = True
+    populate_wordcloud = False
     positive_words = ['deal', 'iran', 'rally', 
                       'aid', 'won', 'top', 'mexico', 
                       'taxes', 'tax', 'plan', 'korea', 'military',
