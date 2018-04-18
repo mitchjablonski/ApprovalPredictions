@@ -181,7 +181,7 @@ def personal_sentiment_analysis(reuters_df, out_dir, positive_words, negative_wo
     reuters_df['TitlePosPred']   = (reuters_df.loc[:,'TitleChange'] >= 0)
     return reuters_df
 
-def main(my_query, url, out_dir, polling_data_framename, 
+def _main(my_query, url, out_dir, polling_data_framename, 
          num_requests, collect_new_data, populate_wordcloud, 
          positive_words, negative_words, stop_words, table_index, latest_year):
     
@@ -250,9 +250,9 @@ if __name__ == "__main__":
     table_index = 1
     latest_year = '2018'
     
-    modified_polling_df = main(my_query, url, out_dir, polling_data_framename, 
-                               num_requests, collect_new_data, populate_wordcloud, 
-                               positive_words, negative_words, stop_words, table_index, latest_year)
+    modified_polling_df = _main(my_query, url, out_dir, polling_data_framename, 
+                                num_requests, collect_new_data, populate_wordcloud, 
+                                positive_words, negative_words, stop_words, table_index, latest_year)
 
               
     
