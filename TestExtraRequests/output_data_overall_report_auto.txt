@@ -1,0 +1,2 @@
+Total_Data_Eval	Total_Pos_Weeks	Total_Neg_weeks	Title_Data_Raw_Correct	Title_Data_Accuracy	Snippet_Data_Raw_Correct	Snippet_Data_Accuracy	TestTrainSplitAccuracyScore
+62	31	31	39	62.9032258065	36	58.064516129	0.500625
